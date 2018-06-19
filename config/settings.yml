@@ -10,3 +10,8 @@
     :password:
     :port:
     :user:
+:workers:
+  :worker_base:
+    :queue_worker_base:
+      :ems_metrics_collector_worker:
+        :ems_metrics_collector_worker_microsoft: {}

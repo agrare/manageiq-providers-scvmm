@@ -1,5 +1,7 @@
 class ManageIQ::Providers::Microsoft::InfraManager < ManageIQ::Providers::InfraManager
   require_nested :Host
+  require_nested :MetricsCapture
+  require_nested :MetricsCollectorWorker
   require_nested :Provision
   require_nested :ProvisionWorkflow
   require_nested :Refresher
@@ -19,6 +21,10 @@ class ManageIQ::Providers::Microsoft::InfraManager < ManageIQ::Providers::InfraM
 
   def self.description
     @description ||= "Microsoft System Center VMM".freeze
+  end
+
+  def self.supported_auth_types
+    %w(default metrics)
   end
 
   def self.raw_connect(connect_params, validate = false)
