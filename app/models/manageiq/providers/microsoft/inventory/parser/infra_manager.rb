@@ -335,13 +335,13 @@ class ManageIQ::Providers::Microsoft::Inventory::Parser::InfraManager < ManageIQ
 
   def parse_vm_custom_properties(vm, data)
     data['CustomProperty'].map do |key, value|
-      {
+      persister.ems_custom_attributes.build(
         :resource => vm,
         :section  => 'custom_field',
         :name     => key,
         :value    => value,
         :source   => 'VC'
-      }
+      )
     end
   end
 
